@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Inicio - Sistema LUA{% endblock %}
+
+{% block contenido %}
+<div class="text-center mt-5">
+    <h1 class="fw-bold text-primary mb-3" style="color: #004080 !important;">
+        Sistema LUA - Legajo Único del Alumno
+    </h1>
+    <p class="lead text-secondary mb-5">
+        Gestión de documentación y requisitos de inscripción para la
+        <span class="fw-semibold">Tecnicatura Superior en Desarrollo de Software</span>.
+    </p>
+
+    <div class="d-flex justify-content-center gap-4 flex-wrap">
+        <a href="{% url 'lua:crear_alumno' %}" class="btn btn-lg btn-primary px-5 py-3 shadow-sm">
+            <i class="bi bi-person-plus-fill"></i> Cargar Alumno
+        </a>
+
+        <a href="{% url 'lua:lista_alumnos' %}" class="btn btn-lg btn-outline-primary px-5 py-3 shadow-sm">
+            <i class="bi bi-people-fill"></i> Ver Alumnos
+        </a>
+    </div>
+</div>
+{% endblock contenido %}

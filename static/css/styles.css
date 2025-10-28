@@ -1,0 +1,389 @@
+/* ============================================================
+   ESTILOS INSTITUCIONALES - SISTEMA LUA
+   Tecnicatura Superior en Desarrollo de Software
+   ============================================================ */
+
+/* ---- PALETA DE COLORES ----
+   Azul institucional: #004080
+   Bordó institucional: #800000
+   Gris medio (body): #cfd3d8
+   Gris azulado (cards/forms): #e0e5ec
+   Texto gris oscuro: #222
+*/
+
+/* ============================================================
+   GLOBAL
+   ============================================================ */
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+body {
+  background-color: #cfd3d8 !important;
+  font-family: 'Poppins', sans-serif;
+  color: #222;
+  margin: 0;
+  padding-top: 70px; /* espacio por navbar fija */
+  padding-bottom: 90px; /* espacio para el footer fijo */
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.navbar {
+  background-color: #004080;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1030;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand {
+  font-weight: 600;
+  color: #fff !important;
+  letter-spacing: 0.5px;
+}
+
+.nav-link {
+  color: #f0f0f0 !important;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  color: #ffd700 !important;
+}
+
+/* ============================================================
+   TITULOS Y TEXTOS
+   ============================================================ */
+h1, h2, h3, h4, h5 {
+  color: #004080;
+  font-weight: 600;
+}
+
+/* Título principal */
+.titulo-principal {
+  background-color: #004080;
+  color: #fff;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.8rem;
+  letter-spacing: 0.5px;
+  padding: 15px;
+  border-radius: 10px 10px 0 0;
+}
+
+/* Subtítulos */
+.subtitulo-seccion {
+  color: #004080;
+  font-weight: 600;
+  font-size: 1.2rem;
+  border-bottom: 2px solid #004080;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+/* ============================================================
+   BOTONES
+   ============================================================ */
+.btn-primary {
+  background-color: #004080;
+  border-color: #004080;
+}
+.btn-primary:hover {
+  background-color: #002a66;
+}
+
+.btn-success {
+  background-color: #006b3f;
+  border-color: #006b3f;
+}
+.btn-success:hover {
+  background-color: #005731;
+}
+
+.btn-danger {
+  background-color: #800000;
+  border-color: #800000;
+}
+.btn-danger:hover {
+  background-color: #a00000;
+}
+
+/* ============================================================
+   LAYOUT DE ALUMNOS
+   ============================================================ */
+.alumnos-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Card alumno */
+.card.alumno-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: #e0e5ec;
+  border: 1px solid #c3cad4;
+  border-radius: 15px;
+  padding: 15px 25px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease-in-out;
+  margin-bottom: 15px;
+}
+
+.card.alumno-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Imagen alumno */
+.card.alumno-card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #004080;
+  flex-shrink: 0;
+  margin-right: 25px;
+  transition: all 0.2s ease-in-out;
+}
+
+.card.alumno-card img:hover {
+  box-shadow: 0 0 8px rgba(0, 64, 128, 0.5);
+  transform: scale(1.03);
+}
+
+/* Info alumno */
+.card.alumno-card .alumno-info {
+  flex: 1;
+  min-width: 200px;
+}
+
+.card.alumno-card .alumno-info h5 {
+  color: #004080;
+  font-weight: 600;
+  margin-bottom: 5px;
+  text-transform: capitalize;
+}
+
+.card.alumno-card .alumno-info p {
+  margin: 2px 0;
+  color: #333;
+}
+
+/* Botones a la derecha */
+.card.alumno-card .alumno-acciones {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.card.alumno-card .btn {
+  width: 100%;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* ============================================================
+   FORMULARIOS Y BLOQUES
+   ============================================================ */
+.form-container {
+  background-color: #e0e5ec;
+  border-radius: 15px;
+  padding: 25px 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  border: 1px solid #c3cad4;
+}
+
+.form-label {
+  color: #004080;
+  font-weight: 500;
+}
+
+.form-control {
+  border-radius: 10px;
+  border: 1px solid #bbb;
+  background-color: #f1f5f9;
+}
+
+.form-control:focus {
+  border-color: #004080;
+  box-shadow: 0 0 4px rgba(0, 64, 128, 0.4);
+  background-color: #fff;
+}
+
+/* Checkbox personalizados */
+.form-check-input {
+  width: 1.3em;
+  height: 1.3em;
+  cursor: pointer;
+  accent-color: #004080;
+  border: 2px solid #004080;
+  box-shadow: 0 0 2px rgba(0, 64, 128, 0.3);
+  transition: all 0.2s ease-in-out;
+}
+
+.form-check-input:checked {
+  background-color: #004080;
+  border-color: #004080;
+  box-shadow: 0 0 4px rgba(0, 64, 128, 0.5);
+  transform: scale(1.05);
+}
+
+.form-check-label {
+  margin-left: 5px;
+  color: #222;
+  font-weight: 500;
+}
+
+/* Bloque requisitos */
+.bloque-requisitos {
+  background-color: #e0e5ec;
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid #c3cad4;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+/* ============================================================
+   LOGIN
+   ============================================================ */
+.card-header.bg-login {
+  background-color: #004080;
+  color: white;
+}
+
+.login-container {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ============================================================
+   FOOTER FIJO
+   ============================================================ */
+footer {
+  background-color: #004080;
+  color: #fff;
+  padding: 15px 0;
+  text-align: center;
+  font-size: 0.9rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 2px solid #003060;
+  z-index: 1030;
+}
+
+footer span.year {
+  color: #ffd700;
+  font-weight: 600;
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN
+   ============================================================ */
+@media (max-width: 480px) {
+  .navbar-brand {
+    font-size: 0.9rem;
+  }
+
+  .nav-link {
+    font-size: 0.85rem;
+    padding: 5px 8px;
+  }
+
+  .card.alumno-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .card.alumno-card img {
+    margin-right: 0;
+    margin-bottom: 10px;
+    width: 85px;
+    height: 85px;
+  }
+
+  .card.alumno-card .alumno-acciones {
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .btn {
+    width: auto;
+  }
+
+  footer {
+    font-size: 0.8rem;
+    padding: 10px;
+  }
+
+  .form-container {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card.alumno-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .card.alumno-card img {
+    margin-right: 0;
+    margin-bottom: 10px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .card.alumno-card .alumno-acciones {
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+    gap: 8px;
+  }
+
+  .form-container {
+    padding: 20px;
+  }
+
+  footer {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .navbar-brand {
+    font-size: 1.1rem;
+  }
+
+  .nav-link {
+    font-size: 0.95rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Listado de Alumnos{% endblock %}
+
+{% block contenido %}
+<div class="container mt-4">
+    <h2 class="fw-bold mb-4" style="color:#004080;">Listado de Alumnos</h2>
+
+    <!-- Buscador -->
+    <form method="get" class="d-flex mb-4">
+        <input type="text" name="q" class="form-control me-2"
+               placeholder="Buscar por nombre o apellido"
+               value="{{ request.GET.q }}">
+        <button class="btn btn-primary">Buscar</button>
+    </form>
+
+    <!-- Contenedor general -->
+    {% if alumnos %}
+        <div class="alumnos-container">
+            {% for alumno in alumnos %}
+            <div class="card alumno-card">
+                <!-- Foto -->
+                {% if alumno.foto %}
+                    <img src="{{ alumno.foto.url }}" alt="Foto de {{ alumno.nombre }}">
+                {% else %}
+                    <img src="{% static 'img/default-user.png' %}" alt="Sin foto">
+                {% endif %}
+
+                <!-- Datos -->
+                <div class="alumno-info">
+                    <h5>{{ alumno.apellido }}, {{ alumno.nombre }}</h5>
+                    <p><strong>DNI:</strong> {{ alumno.dni }}</p>
+                    <p><strong>Email:</strong> {{ alumno.email|default:"No registrado" }}</p>
+                    <p><strong>Teléfono:</strong> {{ alumno.telefono|default:"No registrado" }}</p>
+                </div>
+
+                <!-- Botones verticales -->
+                <div class="alumno-acciones">
+                    <a href="{% url 'lua:detalle_alumno' alumno.id %}" class="btn btn-outline-primary">
+                        <i class="bi bi-eye-fill"></i> Ver
+                    </a>
+                    <a href="{% url 'lua:editar_alumno' alumno.id %}" class="btn btn-outline-success">
+                        <i class="bi bi-pencil-fill"></i> Editar
+                    </a>
+                    <a href="{% url 'lua:eliminar_alumno' alumno.id %}" class="btn btn-outline-danger">
+                        <i class="bi bi-trash-fill"></i> Eliminar
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Paginación -->
+        {% if is_paginated %}
+        <nav aria-label="Paginación" class="mt-4">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+                    </li>
+                {% endif %}
+
+                {% for num in paginator.page_range %}
+                    <li class="page-item {% if page_obj.number == num %}active{% endif %}">
+                        <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                    </li>
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">Siguiente</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% endif %}
+    {% else %}
+        <div class="alert alert-info text-center mb-0">
+            No hay alumnos cargados aún.
+        </div>
+    {% endif %}
+</div>
+{% endblock contenido %}

@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% block title %}Cargar Alumno{% endblock %}
+
+{% block contenido %}
+<div class="container mt-4 mb-5">
+    <div class="form-container">
+        <!-- Título principal -->
+        <div class="titulo-principal">
+            <i class="bi bi-person-plus-fill"></i> Cargar nuevo alumno
+        </div>
+
+        <form method="post" enctype="multipart/form-data" class="mt-4">
+            {% csrf_token %}
+
+            <!-- Datos personales -->
+            <h5 class="subtitulo-seccion">
+                <i class="bi bi-person-lines-fill"></i> Datos personales
+            </h5>
+
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label class="form-label">Nombre</label>
+                    {{ form.nombre }}
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Apellido</label>
+                    {{ form.apellido }}
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">DNI</label>
+                    {{ form.dni }}
+                </div>
+                <div class="col-md-8">
+                    <label class="form-label">Dirección</label>
+                    {{ form.direccion }}
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Edad</label>
+                    {{ form.edad }}
+                </div>
+                <div class="col-md-5">
+                    <label class="form-label">Teléfono</label>
+                    {{ form.telefono }}
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Email</label>
+                    {{ form.email }}
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Foto (opcional)</label>
+                    {{ form.foto }}
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">PDF LUA (obligatorio)</label>
+                    {{ form.pdf_lua }}
+                    {% if form.pdf_lua.errors %}
+                        <div class="text-danger small mt-1">{{ form.pdf_lua.errors.0 }}</div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <hr class="my-4">
+
+            <!-- Requisitos -->
+            <h5 class="subtitulo-seccion">
+                <i class="bi bi-folder-check"></i> Requisitos de inscripción
+            </h5>
+
+            <div class="bloque-requisitos mb-4">
+                <div class="row">
+                    {% for field in requisitos_form %}
+                        <div class="col-md-6 col-lg-4 mb-2">
+                            <div class="form-check">
+                                {{ field }}
+                                <label class="form-check-label" for="{{ field.id_for_label }}">
+                                    {{ field.label }}
+                                </label>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <small class="text-muted">
+                    Marcá los documentos que el alumno entregó en el momento de la inscripción.
+                </small>
+            </div>
+
+            <!-- Botones -->
+            <div class="d-flex justify-content-end gap-2 mt-4">
+                <a href="{% url 'lua:lista_alumnos' %}" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left-circle"></i> Cancelar
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-save-fill"></i> Guardar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock contenido %}
